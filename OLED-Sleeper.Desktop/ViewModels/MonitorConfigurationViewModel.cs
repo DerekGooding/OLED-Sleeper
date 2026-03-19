@@ -379,22 +379,16 @@ public class MonitorConfigurationViewModel : ViewModelBase, IDataErrorInfo
     /// </summary>
     /// <returns>An error message if invalid, otherwise null.</returns>
     private string? ValidateIdleValue()
-    {
-        if (IdleValue == null || IdleValue <= 0)
-            return "Idle time value must be a number greater than zero.";
-        return null;
-    }
+        => IdleValue is null or <= 0 ? "Idle time value must be a number greater than zero." : null;
 
     /// <summary>
     /// Validates that at least one active condition is selected.
     /// </summary>
     /// <returns>An error message if invalid, otherwise null.</returns>
     private string? ValidateActiveConditions()
-    {
-        if (!IsActiveOnInput && !IsActiveOnMousePosition && !IsActiveOnActiveWindow)
-            return "At least one 'Consider Active When' option must be selected.";
-        return null;
-    }
+        => !IsActiveOnInput && !IsActiveOnMousePosition && !IsActiveOnActiveWindow
+            ? "At least one 'Consider Active When' option must be selected."
+            : null;
 
     /// <summary>
     /// Validates the Behavior property to ensure a monitor behavior is selected when managed.
@@ -402,12 +396,7 @@ public class MonitorConfigurationViewModel : ViewModelBase, IDataErrorInfo
     /// <returns>
     /// An error message if the behavior is not selected (None), otherwise null.
     /// </returns>
-    private string? ValidateBehavior()
-    {
-        if (Behavior == MonitorBehaviorType.None)
-            return "A monitor behavior must be selected.";
-        return null;
-    }
+    private string? ValidateBehavior() => Behavior == MonitorBehaviorType.None ? "A monitor behavior must be selected." : null;
 
     #endregion Validation
 }

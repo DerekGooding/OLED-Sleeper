@@ -24,7 +24,7 @@ public class MonitorLayoutService : IMonitorLayoutService
         Log.Debug("Container size: {Width}x{Height}", containerWidth, containerHeight);
 
         var monitorLayoutViewModels = new ObservableCollection<MonitorLayoutViewModel>();
-        if (monitorInfos == null || !monitorInfos.Any())
+        if (monitorInfos?.Any() != true)
         {
             Log.Warning("No monitors found to create layout.");
             return monitorLayoutViewModels;

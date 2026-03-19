@@ -23,7 +23,7 @@ public class EnumToBooleanConverter : IValueConverter
 
         var enumValue = value.ToString();
         var targetValue = parameter.ToString();
-        return enumValue != null && enumValue.Equals(targetValue, StringComparison.InvariantCultureIgnoreCase);
+        return enumValue?.Equals(targetValue, StringComparison.InvariantCultureIgnoreCase) == true;
     }
 
     /// <summary>
