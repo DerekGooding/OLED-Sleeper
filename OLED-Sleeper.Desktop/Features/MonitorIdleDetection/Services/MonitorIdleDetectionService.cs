@@ -307,12 +307,12 @@ public class MonitorIdleDetectionService : IMonitorIdleDetectionService
     {
         if (NativeMethods.DwmGetWindowAttribute(foregroundWindowHandle, NativeMethods.DWMWA_EXTENDED_FRAME_BOUNDS, out var nativeWindowRect, Marshal.SizeOf(typeof(NativeMethods.Rect))) == 0)
         {
-            return nativeWindowRect.ToWindowsRect();
+            return ToWindowsRect(nativeWindowRect);
         }
         else
         {
             NativeMethods.GetWindowRect(foregroundWindowHandle, out nativeWindowRect);
-            return nativeWindowRect.ToWindowsRect();
+            return ToWindowsRect(nativeWindowRect);
         }
     }
 
@@ -380,5 +380,18 @@ public class MonitorIdleDetectionService : IMonitorIdleDetectionService
             ForegroundWindowRect = windowRect;
             ForegroundWindowHandle = windowHandle;
         }
+    }
+
+    /// <summary>
+    /// Converts a native Rect (Left, Top, Right, Bottom) to a WPF Rect (X, Y, Width, Height).
+    /// </summary>
+    internal static Rect ToWindowsRect(NativeMethods.Rect nativeRect)
+    {
+        return new Rect(
+            nativeRect.left,
+            nativeRect.top,
+            nativeRect.right - nativeRect.left,
+            nativeRect.bottom - nativeRect.top
+        );
     }
 }

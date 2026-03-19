@@ -1,12 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace OLED_Sleeper.Native;
+namespace OLED_Sleeper;
 
 /// <summary>
 /// Provides P/Invoke (Platform Invocation Services) definitions for native Windows API functions.
 /// This static internal class centralizes all native code interactions for the application.
 /// </summary>
-internal static class NativeMethods
+public static class NativeMethods
 {
     #region User Input and Window Management
 

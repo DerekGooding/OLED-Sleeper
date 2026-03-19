@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace OLED_Sleeper.UI.Helpers;
+namespace OLED_Sleeper;
 
 /// <summary>
 /// Provides static helper methods to manage the application's startup behavior via the Windows registry.
