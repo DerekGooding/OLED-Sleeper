@@ -1,5 +1,4 @@
-﻿using OLED_Sleeper.Commands;
-using OLED_Sleeper.Core;
+﻿using OLED_Sleeper.Core;
 using OLED_Sleeper.Features.UserSettings.Services.Interfaces;
 using OLED_Sleeper.Helpers;
 using OLED_Sleeper.Model;
