@@ -1,23 +1,22 @@
-﻿namespace OLED_Sleeper.UI.Models
+﻿namespace OLED_Sleeper.UI.Models;
+
+/// <summary>
+/// Specifies the time unit for idle timeout and other duration-based settings.
+/// </summary>
+public enum TimeUnit
 {
     /// <summary>
-    /// Specifies the time unit for idle timeout and other duration-based settings.
+    /// Time is measured in seconds.
     /// </summary>
-    public enum TimeUnit
-    {
-        /// <summary>
-        /// Time is measured in seconds.
-        /// </summary>
-        Seconds,
+    Seconds,
 
-        /// <summary>
-        /// Time is measured in minutes.
-        /// </summary>
-        Minutes,
+    /// <summary>
+    /// Time is measured in minutes.
+    /// </summary>
+    Minutes,
 
-        /// <summary>
-        /// Time is measured in hours.
-        /// </summary>
-        Hours
-    }
+    /// <summary>
+    /// Time is measured in hours.
+    /// </summary>
+    Hours
 }

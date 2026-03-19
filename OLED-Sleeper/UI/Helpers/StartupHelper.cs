@@ -1,44 +1,43 @@
 ﻿using Microsoft.Win32;
 
-namespace OLED_Sleeper.UI.Helpers
+namespace OLED_Sleeper.UI.Helpers;
+
+/// <summary>
+/// Provides static helper methods to manage the application's startup behavior via the Windows registry.
+/// </summary>
+public static class StartupHelper
 {
+    private const string AppName = "OLED Sleeper";
+    private const string RunKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+
     /// <summary>
-    /// Provides static helper methods to manage the application's startup behavior via the Windows registry.
+    /// Checks if the app is currently set to run at startup.
     /// </summary>
-    public static class StartupHelper
+    public static bool IsRunAtStartupEnabled()
     {
-        private const string AppName = "OLED Sleeper";
-        private const string RunKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(RunKeyPath, false);
+        return key?.GetValue(AppName) != null;
+    }
 
-        /// <summary>
-        /// Checks if the app is currently set to run at startup.
-        /// </summary>
-        public static bool IsRunAtStartupEnabled()
+    /// <summary>
+    /// Toggles the startup registry key on or off.
+    /// </summary>
+    public static void SetRunAtStartup(bool enable)
+    {
+        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(RunKeyPath, true);
+        if (key == null) return;
+
+        if (enable)
         {
-            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(RunKeyPath, false);
-            return key?.GetValue(AppName) != null;
+            string? exePath = Environment.ProcessPath;
+            if (!string.IsNullOrEmpty(exePath))
+            {
+                key.SetValue(AppName, $"\"{exePath}\"");
+            }
         }
-
-        /// <summary>
-        /// Toggles the startup registry key on or off.
-        /// </summary>
-        public static void SetRunAtStartup(bool enable)
+        else
         {
-            using RegistryKey? key = Registry.CurrentUser.OpenSubKey(RunKeyPath, true);
-            if (key == null) return;
-
-            if (enable)
-            {
-                string? exePath = Environment.ProcessPath;
-                if (!string.IsNullOrEmpty(exePath))
-                {
-                    key.SetValue(AppName, $"\"{exePath}\"");
-                }
-            }
-            else
-            {
-                key.DeleteValue(AppName, false);
-            }
+            key.DeleteValue(AppName, false);
         }
     }
 }

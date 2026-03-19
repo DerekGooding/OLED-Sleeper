@@ -1,23 +1,22 @@
-﻿namespace OLED_Sleeper.Features.MonitorBehavior.Models
+﻿namespace OLED_Sleeper.Features.MonitorBehavior.Models;
+
+/// <summary>
+/// Specifies the behavior to apply to a monitor when it becomes idle.
+/// </summary>
+public enum MonitorBehaviorType
 {
     /// <summary>
-    /// Specifies the behavior to apply to a monitor when it becomes idle.
+    /// No behavior is set.
     /// </summary>
-    public enum MonitorBehaviorType
-    {
-        /// <summary>
-        /// No behavior is set.
-        /// </summary>
-        None,
+    None,
 
-        /// <summary>
-        /// Dim the monitor's brightness.
-        /// </summary>
-        Dim,
+    /// <summary>
+    /// Dim the monitor's brightness.
+    /// </summary>
+    Dim,
 
-        /// <summary>
-        /// Apply a blackout overlay to the monitor.
-        /// </summary>
-        Blackout
-    }
+    /// <summary>
+    /// Apply a blackout overlay to the monitor.
+    /// </summary>
+    Blackout
 }
