@@ -4,7 +4,6 @@ using OLED_Sleeper.UI.Commands;
 using OLED_Sleeper.UI.Helpers;
 using OLED_Sleeper.UI.Services.Interfaces;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace OLED_Sleeper.UI.ViewModels;

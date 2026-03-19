@@ -1,5 +1,4 @@
 ﻿using OLED_Sleeper.UI.ViewModels;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace OLED_Sleeper.UI.Views;

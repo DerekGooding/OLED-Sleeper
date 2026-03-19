@@ -1,5 +1,3 @@
-using System.Windows;
-
 namespace OLED_Sleeper.Features.MonitorBlackout.Services.Interfaces;
 
 /// <summary>

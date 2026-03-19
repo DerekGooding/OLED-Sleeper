@@ -1,6 +1,4 @@
 ﻿using OLED_Sleeper.Features.MonitorInformation.Models;
-using System.Windows;
-using System.Windows.Media;
 
 namespace OLED_Sleeper.UI.ViewModels;
 

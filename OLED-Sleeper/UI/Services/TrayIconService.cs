@@ -2,7 +2,6 @@ using Hardcodet.Wpf.TaskbarNotification;
 using OLED_Sleeper.UI.Helpers;
 using OLED_Sleeper.UI.Services.Interfaces;
 using Serilog;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace OLED_Sleeper.UI.Services;

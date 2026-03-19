@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace OLED_Sleeper.Features.MonitorInformation.Models;
+﻿namespace OLED_Sleeper.Features.MonitorInformation.Models;
 
 /// <summary>
 /// Represents a physical or logical monitor attached to the system.

@@ -4,7 +4,6 @@ using OLED_Sleeper.Native;
 using Serilog;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Windows;
 
 namespace OLED_Sleeper.Features.MonitorInformation.Services;
 

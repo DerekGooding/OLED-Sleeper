@@ -8,7 +8,6 @@ using OLED_Sleeper.Features.UserSettings.Models;
 using OLED_Sleeper.Native;
 using Serilog;
 using System.Runtime.InteropServices;
-using System.Windows;
 
 namespace OLED_Sleeper.Features.MonitorIdleDetection.Services;
 

@@ -1,6 +1,5 @@
 ﻿using OLED_Sleeper.UI.ViewModels;
 using System.Text;
-using System.Windows;
 
 namespace OLED_Sleeper.UI.Helpers;
 

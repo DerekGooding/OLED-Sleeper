@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace OLED_Sleeper.Native;
+﻿namespace OLED_Sleeper.Native;
 
 /// <summary>
 /// Provides simple conversion methods for native Windows types.
