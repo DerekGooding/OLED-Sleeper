@@ -3,7 +3,7 @@ using OLED_Sleeper.Features.MonitorBlackout.Commands;
 using OLED_Sleeper.Features.MonitorBlackout.Handlers;
 using OLED_Sleeper.Features.MonitorBlackout.Services.Interfaces;
 using OLED_Sleeper.Features.MonitorDimming.Services.Interfaces;
-using OLED_Sleeper.Features.MonitorInformation.Models;
+using OLED_Sleeper.Features.MonitorInformation.Model;
 using OLED_Sleeper.Features.MonitorInformation.Services.Interfaces;
 using System.Windows;
 

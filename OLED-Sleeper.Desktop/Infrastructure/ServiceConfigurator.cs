@@ -21,9 +21,10 @@ using OLED_Sleeper.Features.MonitorState.Services;
 using OLED_Sleeper.Features.MonitorState.Services.Interfaces;
 using OLED_Sleeper.Features.UserSettings.Services;
 using OLED_Sleeper.Features.UserSettings.Services.Interfaces;
-using OLED_Sleeper.UI.Services;
-using OLED_Sleeper.UI.Services.Interfaces;
-using OLED_Sleeper.UI.ViewModels;
+using OLED_Sleeper.Services;
+using OLED_Sleeper.Services.Interfaces;
+using OLED_Sleeper.ViewModels;
+using OLED_Sleeper.Views;
 
 namespace OLED_Sleeper.Infrastructure;
 

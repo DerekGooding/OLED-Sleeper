@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using OLED_Sleeper.Core;
 using OLED_Sleeper.Core.Interfaces;
-using OLED_Sleeper.UI.Services.Interfaces;
+using OLED_Sleeper.Services.Interfaces;
 using Serilog;
 
 namespace OLED_Sleeper.Infrastructure;

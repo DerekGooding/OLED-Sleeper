@@ -1,5 +1,5 @@
 ﻿using OLED_Sleeper.Features.MonitorBehavior.Models;
-using OLED_Sleeper.UI.Models;
+using OLED_Sleeper.Model;
 
 namespace OLED_Sleeper.Features.UserSettings.Models;
 

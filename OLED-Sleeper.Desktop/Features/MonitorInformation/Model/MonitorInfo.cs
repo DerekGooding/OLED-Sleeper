@@ -1,4 +1,4 @@
-﻿namespace OLED_Sleeper.Features.MonitorInformation.Models;
+﻿namespace OLED_Sleeper.Features.MonitorInformation.Model;
 
 /// <summary>
 /// Represents a physical or logical monitor attached to the system.

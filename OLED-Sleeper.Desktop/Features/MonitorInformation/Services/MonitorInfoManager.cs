@@ -1,4 +1,4 @@
-﻿using OLED_Sleeper.Features.MonitorInformation.Models;
+﻿using OLED_Sleeper.Features.MonitorInformation.Model;
 using OLED_Sleeper.Features.MonitorInformation.Services.Interfaces;
 using Serilog;
 
