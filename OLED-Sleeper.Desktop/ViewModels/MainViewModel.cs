@@ -2,6 +2,7 @@
 using OLED_Sleeper.Core;
 using OLED_Sleeper.Features.UserSettings.Services.Interfaces;
 using OLED_Sleeper.Helpers;
+using OLED_Sleeper.Model;
 using OLED_Sleeper.Services.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;

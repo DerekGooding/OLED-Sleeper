@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace OLED_Sleeper.Commands;
+namespace OLED_Sleeper.Model;
 
 public class RelayCommand(Action<object?> execute, Predicate<object?>? canExecute = null)
     : ICommand

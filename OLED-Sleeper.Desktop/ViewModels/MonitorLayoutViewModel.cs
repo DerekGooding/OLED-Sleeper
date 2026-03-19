@@ -1,4 +1,5 @@
 ﻿using OLED_Sleeper.Features.MonitorInformation.Model;
+using OLED_Sleeper.Model;
 
 namespace OLED_Sleeper.ViewModels;
 

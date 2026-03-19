@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace OLED_Sleeper.Commands;
+namespace OLED_Sleeper.Model;
 
 /// <summary>
 /// An asynchronous implementation of <see cref="ICommand"/> for WPF, supporting async/await and disabling while executing.
