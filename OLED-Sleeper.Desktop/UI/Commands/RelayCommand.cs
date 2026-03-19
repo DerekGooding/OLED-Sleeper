@@ -15,17 +15,10 @@ public class RelayCommand(Action<object?> execute, Predicate<object?>? canExecut
 
     public event EventHandler? CanExecuteChanged
     {
-        add { CommandManager.RequerySuggested += value; }
-        remove { CommandManager.RequerySuggested -= value; }
+        add => CommandManager.RequerySuggested += value; remove => CommandManager.RequerySuggested -= value;
     }
 
-    public bool CanExecute(object? parameter)
-    {
-        return canExecute == null || canExecute(parameter);
-    }
+    public bool CanExecute(object? parameter) => canExecute == null || canExecute(parameter);
 
-    public void Execute(object? parameter)
-    {
-        _execute(parameter);
-    }
+    public void Execute(object? parameter) => _execute(parameter);
 }

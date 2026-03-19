@@ -5,23 +5,21 @@ namespace OLED_Sleeper.UI.Commands;
 /// <summary>
 /// An asynchronous implementation of <see cref="ICommand"/> for WPF, supporting async/await and disabling while executing.
 /// </summary>
-public class AsyncRelayCommand : ICommand
+/// <remarks>
+/// Initializes a new instance of the <see cref="AsyncRelayCommand"/> class.
+/// </remarks>
+/// <param name="execute">The asynchronous action to execute.</param>
+/// <param name="canExecute">Predicate to determine if the command can execute.</param>
+public class AsyncRelayCommand(Func<Task> execute, Func<bool>? canExecute = null) : ICommand
 {
-    #region Fields
-
-    private readonly Func<Task> _execute;
-    private readonly Func<bool>? _canExecute;
+    private readonly Func<Task> _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+    private readonly Func<bool>? _canExecute = canExecute;
     private bool _isExecuting;
-
-    #endregion Fields
-
-    #region ICommand Implementation
 
     /// <inheritdoc />
     public event EventHandler? CanExecuteChanged
     {
-        add { CommandManager.RequerySuggested += value; }
-        remove { CommandManager.RequerySuggested -= value; }
+        add => CommandManager.RequerySuggested += value; remove => CommandManager.RequerySuggested -= value;
     }
 
     /// <summary>
@@ -29,10 +27,7 @@ public class AsyncRelayCommand : ICommand
     /// </summary>
     /// <param name="parameter">Command parameter (not used).</param>
     /// <returns>True if the command can execute; otherwise, false.</returns>
-    public bool CanExecute(object? parameter)
-    {
-        return !_isExecuting && (_canExecute?.Invoke() ?? true);
-    }
+    public bool CanExecute(object? parameter) => !_isExecuting && (_canExecute?.Invoke() ?? true);
 
     /// <summary>
     /// Executes the command asynchronously.
@@ -52,21 +47,4 @@ public class AsyncRelayCommand : ICommand
             CommandManager.InvalidateRequerySuggested();
         }
     }
-
-    #endregion ICommand Implementation
-
-    #region Constructor
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AsyncRelayCommand"/> class.
-    /// </summary>
-    /// <param name="execute">The asynchronous action to execute.</param>
-    /// <param name="canExecute">Predicate to determine if the command can execute.</param>
-    public AsyncRelayCommand(Func<Task> execute, Func<bool>? canExecute = null)
-    {
-        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-        _canExecute = canExecute;
-    }
-
-    #endregion Constructor
 }
