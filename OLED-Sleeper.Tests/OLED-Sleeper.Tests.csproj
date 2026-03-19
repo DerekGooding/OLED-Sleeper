@@ -20,7 +20,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\OLED-Sleeper\OLED-Sleeper.Desktop.csproj" />
+	  <ProjectReference Include="..\OLED-Sleeper.Desktop\OLED-Sleeper.Desktop.csproj" />
+	  <ProjectReference Include="..\OLED-Sleeper\OLED-Sleeper.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

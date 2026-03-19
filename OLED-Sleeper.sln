@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OLED-Sleeper.Desktop", "OLE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OLED-Sleeper.Tests", "OLED-Sleeper.Tests\OLED-Sleeper.Tests.csproj", "{0D1EC917-3273-4B25-A205-F97CEC3C8AF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OLED-Sleeper", "OLED-Sleeper\OLED-Sleeper.csproj", "{B640F914-D7CA-4518-95E7-8CC2E9126E93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D1EC917-3273-4B25-A205-F97CEC3C8AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D1EC917-3273-4B25-A205-F97CEC3C8AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D1EC917-3273-4B25-A205-F97CEC3C8AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B640F914-D7CA-4518-95E7-8CC2E9126E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B640F914-D7CA-4518-95E7-8CC2E9126E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B640F914-D7CA-4518-95E7-8CC2E9126E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B640F914-D7CA-4518-95E7-8CC2E9126E93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
