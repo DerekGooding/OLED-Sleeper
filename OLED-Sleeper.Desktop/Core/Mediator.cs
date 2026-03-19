@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using OLED_Sleeper.Core.Interfaces;
+﻿using OLED_Sleeper.Core.Interfaces;
 
 namespace OLED_Sleeper.Core;
 

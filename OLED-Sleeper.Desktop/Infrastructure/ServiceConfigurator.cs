@@ -1,4 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
 using OLED_Sleeper.Core;
 using OLED_Sleeper.Core.Interfaces;
 using OLED_Sleeper.Features.MonitorBehavior.Commands;
