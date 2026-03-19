@@ -9,19 +9,14 @@ namespace OLED_Sleeper.Features.MonitorBlackout.Handlers;
 /// Handles the execution of the <see cref="HideBlackoutOverlayCommand"/>.
 /// This class contains the business logic for hiding the blackout overlay on a monitor.
 /// </summary>
-public class HideBlackoutOverlayCommandHandler : ICommandHandler<HideBlackoutOverlayCommand>
+/// <remarks>
+/// Initializes a new instance of the <see cref="HideBlackoutOverlayCommandHandler"/> class.
+/// </remarks>
+/// <param name="monitorBlackoutService">The service responsible for showing/hiding blackout overlays.</param>
+public class HideBlackoutOverlayCommandHandler(
+    IMonitorBlackoutService monitorBlackoutService) : ICommandHandler<HideBlackoutOverlayCommand>
 {
-    private readonly IMonitorBlackoutService _monitorBlackoutService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HideBlackoutOverlayCommandHandler"/> class.
-    /// </summary>
-    /// <param name="monitorBlackoutService">The service responsible for showing/hiding blackout overlays.</param>
-    public HideBlackoutOverlayCommandHandler(
-        IMonitorBlackoutService monitorBlackoutService)
-    {
-        _monitorBlackoutService = monitorBlackoutService;
-    }
+    private readonly IMonitorBlackoutService _monitorBlackoutService = monitorBlackoutService;
 
     /// <summary>
     /// Executes the logic to hide the blackout overlay asynchronously based on the command's data.

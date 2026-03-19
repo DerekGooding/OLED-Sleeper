@@ -13,10 +13,7 @@ public partial class MonitorLayoutView : UserControl
     /// <summary>
     /// Initializes a new instance of the <see cref="MonitorLayoutView"/> class.
     /// </summary>
-    public MonitorLayoutView()
-    {
-        InitializeComponent();
-    }
+    public MonitorLayoutView() => InitializeComponent();
 
     /// <summary>
     /// Handles the SizeChanged event for the UserControl.

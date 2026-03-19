@@ -19,29 +19,21 @@ namespace OLED_Sleeper.Features.MonitorIdleDetection.Services;
 /// Service that monitors user activity and determines when managed monitors become idle or active.
 /// Handles per-monitor state machines and dispatches commands to apply idle/active behaviors.
 /// </summary>
-public class MonitorIdleDetectionService : IMonitorIdleDetectionService
+/// <remarks>
+/// Initializes a new instance of the <see cref="MonitorIdleDetectionService"/> class.
+/// </remarks>
+/// <param name="monitorManager">Service for monitor information.</param>
+/// <param name="mediator">Mediator for dispatching monitor behavior commands.</param>
+public class MonitorIdleDetectionService(IMonitorInfoManager monitorManager, IMediator mediator) : IMonitorIdleDetectionService
 {
     // === Dependencies & State ===
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator = mediator;
 
-    private readonly IMonitorInfoManager _monitorManager;
+    private readonly IMonitorInfoManager _monitorManager = monitorManager;
     private CancellationTokenSource _cancellationTokenSource;
     private List<ManagedMonitorState> _managedMonitors = new();
     private readonly object _lock = new();
     private readonly Dictionary<string, MonitorTimerState> _monitorStates = new();
-
-    // === Construction ===
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MonitorIdleDetectionService"/> class.
-    /// </summary>
-    /// <param name="monitorManager">Service for monitor information.</param>
-    /// <param name="mediator">Mediator for dispatching monitor behavior commands.</param>
-    public MonitorIdleDetectionService(IMonitorInfoManager monitorManager, IMediator mediator)
-    {
-        _monitorManager = monitorManager;
-        _mediator = mediator;
-    }
 
     // === Service Lifecycle ===
 
@@ -365,20 +357,12 @@ public class MonitorIdleDetectionService : IMonitorIdleDetectionService
     /// <summary>
     /// Snapshot of system state at a point in time.
     /// </summary>
-    private readonly struct SystemState
+    private readonly struct SystemState(uint idleTime, Point cursorPosition, Rect windowRect, nint windowHandle)
     {
-        public readonly uint IdleTimeMilliseconds;
-        public readonly Point CursorPosition;
-        public readonly Rect ForegroundWindowRect;
-        public readonly nint ForegroundWindowHandle;
-
-        public SystemState(uint idleTime, Point cursorPosition, Rect windowRect, nint windowHandle)
-        {
-            IdleTimeMilliseconds = idleTime;
-            CursorPosition = cursorPosition;
-            ForegroundWindowRect = windowRect;
-            ForegroundWindowHandle = windowHandle;
-        }
+        public readonly uint IdleTimeMilliseconds = idleTime;
+        public readonly Point CursorPosition = cursorPosition;
+        public readonly Rect ForegroundWindowRect = windowRect;
+        public readonly nint ForegroundWindowHandle = windowHandle;
     }
 
     /// <summary>

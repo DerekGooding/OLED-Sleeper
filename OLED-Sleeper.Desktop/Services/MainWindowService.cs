@@ -7,21 +7,15 @@ namespace OLED_Sleeper.Services;
 /// <summary>
 /// Provides methods to set up, show, and activate the main window.
 /// </summary>
-public class MainWindowService : IMainWindowService
+/// <remarks>
+/// Initializes a new instance of <see cref="MainWindowService"/>.
+/// </remarks>
+/// <param name="mainWindow">The main application window.</param>
+/// <param name="mainViewModel">The main view model for the window.</param>
+public class MainWindowService(MainWindow mainWindow, MainViewModel mainViewModel) : IMainWindowService
 {
-    private readonly MainWindow _mainWindow;
-    private readonly MainViewModel _mainViewModel;
-
-    /// <summary>
-    /// Initializes a new instance of <see cref="MainWindowService"/>.
-    /// </summary>
-    /// <param name="mainWindow">The main application window.</param>
-    /// <param name="mainViewModel">The main view model for the window.</param>
-    public MainWindowService(MainWindow mainWindow, MainViewModel mainViewModel)
-    {
-        _mainWindow = mainWindow;
-        _mainViewModel = mainViewModel;
-    }
+    private readonly MainWindow _mainWindow = mainWindow;
+    private readonly MainViewModel _mainViewModel = mainViewModel;
 
     /// <summary>
     /// Sets up the main window as the application's main window, assigns its data context, and shows it.

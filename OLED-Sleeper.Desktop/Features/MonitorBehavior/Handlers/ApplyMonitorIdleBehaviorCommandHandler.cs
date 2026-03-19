@@ -10,14 +10,9 @@ namespace OLED_Sleeper.Features.MonitorBehavior.Handlers;
 /// <summary>
 /// Handles the <see cref="ApplyMonitorIdleBehaviorCommand"/> by dispatching the appropriate dim or blackout command.
 /// </summary>
-public class ApplyMonitorIdleBehaviorCommandHandler : ICommandHandler<ApplyMonitorIdleBehaviorCommand>
+public class ApplyMonitorIdleBehaviorCommandHandler(IMediator mediator) : ICommandHandler<ApplyMonitorIdleBehaviorCommand>
 {
-    private readonly IMediator _mediator;
-
-    public ApplyMonitorIdleBehaviorCommandHandler(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
+    private readonly IMediator _mediator = mediator;
 
     /// <summary>
     /// Handles the <see cref="ApplyMonitorIdleBehaviorCommand"/> by dispatching the appropriate dim or blackout command for the monitor.

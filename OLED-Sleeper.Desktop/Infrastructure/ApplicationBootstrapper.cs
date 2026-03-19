@@ -16,7 +16,7 @@ public class ApplicationBootstrapper : IDisposable
     private ITrayIconService? _trayIconService;
     private IMainWindowService? _mainWindowService;
     private ApplicationInstanceManager? _instanceManager;
-    private bool _isExiting = false;
+    private bool _isExiting;
 
     /// <summary>
     /// Initializes the application: logging, single-instance, DI, orchestrator, main window, and tray icon.
@@ -44,10 +44,7 @@ public class ApplicationBootstrapper : IDisposable
     /// <summary>
     /// Configures dependency injection services and builds the service provider using <see cref="ServiceConfigurator"/>.
     /// </summary>
-    private void ConfigureServices()
-    {
-        _serviceProvider = ServiceConfigurator.ConfigureServices(_instanceManager!);
-    }
+    private void ConfigureServices() => _serviceProvider = ServiceConfigurator.ConfigureServices(_instanceManager!);
 
     /// <summary>
     /// Starts the application orchestrator service.
@@ -87,10 +84,7 @@ public class ApplicationBootstrapper : IDisposable
     /// <summary>
     /// Hooks up the delegate for showing the main window after DI and services are ready.
     /// </summary>
-    private void HookInstanceManagerShowWindow()
-    {
-        _instanceManager?.SetShowMainWindowAction(() => _mainWindowService?.ShowMainWindow());
-    }
+    private void HookInstanceManagerShowWindow() => _instanceManager?.SetShowMainWindowAction(() => _mainWindowService?.ShowMainWindow());
 
     /// <summary>
     /// Performs shutdown logic, including log flush and tray icon disposal.
@@ -120,6 +114,7 @@ public class ApplicationBootstrapper : IDisposable
     /// </summary>
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
         _trayIconService?.Dispose();
         _instanceManager?.Dispose();
         (_serviceProvider as IDisposable)?.Dispose();

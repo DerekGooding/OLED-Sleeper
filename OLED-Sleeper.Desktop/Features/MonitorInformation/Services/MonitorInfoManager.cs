@@ -8,11 +8,15 @@ namespace OLED_Sleeper.Features.MonitorInformation.Services;
 /// Manages monitor information, including caching and enrichment with DDC/CI support and hardware IDs.
 /// Publishes an event when the monitor list is ready after async retrieval.
 /// </summary>
-public class MonitorInfoManager : IMonitorInfoManager
+/// <remarks>
+/// Initializes a new instance of the <see cref="MonitorInfoManager"/> class.
+/// </remarks>
+/// <param name="monitorInfoProvider">The monitor info provider dependency.</param>
+public class MonitorInfoManager(IMonitorInfoProvider monitorInfoProvider) : IMonitorInfoManager
 {
     #region Fields
 
-    private readonly IMonitorInfoProvider _monitorInfoProvider;
+    private readonly IMonitorInfoProvider _monitorInfoProvider = monitorInfoProvider;
     private List<MonitorInfo> _cachedMonitors;
     private readonly object _lock = new object();
     private Task? _refreshTask;
@@ -27,17 +31,7 @@ public class MonitorInfoManager : IMonitorInfoManager
     public event EventHandler<IReadOnlyList<MonitorInfo>> MonitorListReady;
 
     #endregion Events
-
     #region Constructor
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MonitorInfoManager"/> class.
-    /// </summary>
-    /// <param name="monitorInfoProvider">The monitor info provider dependency.</param>
-    public MonitorInfoManager(IMonitorInfoProvider monitorInfoProvider)
-    {
-        _monitorInfoProvider = monitorInfoProvider;
-    }
 
     #endregion Constructor
 

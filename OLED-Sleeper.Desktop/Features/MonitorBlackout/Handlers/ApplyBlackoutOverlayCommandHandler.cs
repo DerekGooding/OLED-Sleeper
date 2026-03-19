@@ -13,27 +13,20 @@ namespace OLED_Sleeper.Features.MonitorBlackout.Handlers;
 /// This class contains the business logic for applying the blackout effect to a monitor,
 /// which includes showing a software overlay and setting the hardware brightness to zero if supported.
 /// </summary>
-public class ApplyBlackoutOverlayCommandHandler : ICommandHandler<ApplyBlackoutOverlayCommand>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ApplyBlackoutOverlayCommandHandler"/> class.
+/// </remarks>
+/// <param name="monitorInfoManager"></param>
+/// <param name="monitorBlackoutService">The service responsible for showing/hiding blackout overlays.</param>
+/// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
+public class ApplyBlackoutOverlayCommandHandler(
+    IMonitorInfoManager monitorInfoManager,
+    IMonitorBlackoutService monitorBlackoutService,
+    IMonitorDimmingService monitorDimmingService) : ICommandHandler<ApplyBlackoutOverlayCommand>
 {
-    private readonly IMonitorInfoManager _monitorInfoManager;
-    private readonly IMonitorBlackoutService _monitorBlackoutService;
-    private readonly IMonitorDimmingService _monitorDimmingService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ApplyBlackoutOverlayCommandHandler"/> class.
-    /// </summary>
-    /// <param name="monitorInfoManager"></param>
-    /// <param name="monitorBlackoutService">The service responsible for showing/hiding blackout overlays.</param>
-    /// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
-    public ApplyBlackoutOverlayCommandHandler(
-        IMonitorInfoManager monitorInfoManager,
-        IMonitorBlackoutService monitorBlackoutService,
-        IMonitorDimmingService monitorDimmingService)
-    {
-        _monitorInfoManager = monitorInfoManager;
-        _monitorBlackoutService = monitorBlackoutService;
-        _monitorDimmingService = monitorDimmingService;
-    }
+    private readonly IMonitorInfoManager _monitorInfoManager = monitorInfoManager;
+    private readonly IMonitorBlackoutService _monitorBlackoutService = monitorBlackoutService;
+    private readonly IMonitorDimmingService _monitorDimmingService = monitorDimmingService;
 
     /// <summary>
     /// Executes the blackout logic asynchronously based on the command's data.

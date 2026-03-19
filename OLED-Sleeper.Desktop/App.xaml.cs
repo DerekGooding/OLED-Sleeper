@@ -19,7 +19,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        this.SessionEnding += App_SessionEnding;
+        SessionEnding += App_SessionEnding;
         _bootstrapper = new ApplicationBootstrapper();
         _bootstrapper.Initialize();
     }

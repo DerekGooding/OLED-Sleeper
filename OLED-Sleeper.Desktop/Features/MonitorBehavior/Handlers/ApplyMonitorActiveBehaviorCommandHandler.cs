@@ -10,23 +10,17 @@ namespace OLED_Sleeper.Features.MonitorBehavior.Handlers;
 /// Handles the execution of the <see cref="ApplyMonitorActiveBehaviorCommand"/>.
 /// Applies the correct behavior when a monitor becomes active, including filtering out overlay-initiated activations and restoring the monitor's normal state.
 /// </summary>
-public class ApplyMonitorActiveBehaviorCommandHandler : ICommandHandler<ApplyMonitorActiveBehaviorCommand>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ApplyMonitorActiveBehaviorCommandHandler"/> class.
+/// </remarks>
+/// <param name="monitorBlackoutService">The service responsible for blackout overlays.</param>
+/// <param name="mediator">The mediator for dispatching further commands.</param>
+public class ApplyMonitorActiveBehaviorCommandHandler(
+    IMonitorBlackoutService monitorBlackoutService,
+    IMediator mediator) : ICommandHandler<ApplyMonitorActiveBehaviorCommand>
 {
-    private readonly IMonitorBlackoutService _monitorBlackoutService;
-    private readonly IMediator _mediator;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ApplyMonitorActiveBehaviorCommandHandler"/> class.
-    /// </summary>
-    /// <param name="monitorBlackoutService">The service responsible for blackout overlays.</param>
-    /// <param name="mediator">The mediator for dispatching further commands.</param>
-    public ApplyMonitorActiveBehaviorCommandHandler(
-        IMonitorBlackoutService monitorBlackoutService,
-        IMediator mediator)
-    {
-        _monitorBlackoutService = monitorBlackoutService;
-        _mediator = mediator;
-    }
+    private readonly IMonitorBlackoutService _monitorBlackoutService = monitorBlackoutService;
+    private readonly IMediator _mediator = mediator;
 
     /// <summary>
     /// Handles the monitor activation event, restoring monitor state if not triggered by overlay window.

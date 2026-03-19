@@ -25,33 +25,25 @@ namespace OLED_Sleeper.Core;
 /// </list>
 /// </para>
 /// </summary>
-public class ApplicationOrchestrator : IApplicationOrchestrator
+/// <remarks>
+/// Initializes a new instance of the <see cref="ApplicationOrchestrator"/> class.
+/// </remarks>
+/// <param name="mediator">Mediator for dispatching monitor-related commands.</param>
+/// <param name="monitorIdleDetectionService">Service for detecting monitor idle state and applying idle/active behaviors.</param>
+/// <param name="monitorSettingsFileService">Service for loading and saving monitor settings.</param>
+/// <param name="monitorStateWatcher">Service for monitoring system monitor connection/disconnection.</param>
+public class ApplicationOrchestrator(
+    IMediator mediator,
+    IMonitorIdleDetectionService monitorIdleDetectionService,
+    IMonitorSettingsFileService monitorSettingsFileService,
+    IMonitorStateWatcher monitorStateWatcher) : IApplicationOrchestrator
 {
-    private readonly IMediator _mediator;
-    private readonly IMonitorIdleDetectionService _monitorIdleDetectionService;
-    private readonly IMonitorSettingsFileService _monitorSettingsFileService;
-    private readonly IMonitorStateWatcher _monitorStateWatcher;
+    private readonly IMediator _mediator = mediator;
+    private readonly IMonitorIdleDetectionService _monitorIdleDetectionService = monitorIdleDetectionService;
+    private readonly IMonitorSettingsFileService _monitorSettingsFileService = monitorSettingsFileService;
+    private readonly IMonitorStateWatcher _monitorStateWatcher = monitorStateWatcher;
 
     #region Constructor
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ApplicationOrchestrator"/> class.
-    /// </summary>
-    /// <param name="mediator">Mediator for dispatching monitor-related commands.</param>
-    /// <param name="monitorIdleDetectionService">Service for detecting monitor idle state and applying idle/active behaviors.</param>
-    /// <param name="monitorSettingsFileService">Service for loading and saving monitor settings.</param>
-    /// <param name="monitorStateWatcher">Service for monitoring system monitor connection/disconnection.</param>
-    public ApplicationOrchestrator(
-        IMediator mediator,
-        IMonitorIdleDetectionService monitorIdleDetectionService,
-        IMonitorSettingsFileService monitorSettingsFileService,
-        IMonitorStateWatcher monitorStateWatcher)
-    {
-        _mediator = mediator;
-        _monitorIdleDetectionService = monitorIdleDetectionService;
-        _monitorSettingsFileService = monitorSettingsFileService;
-        _monitorStateWatcher = monitorStateWatcher;
-    }
 
     #endregion Constructor
 

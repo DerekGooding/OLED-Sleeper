@@ -9,19 +9,14 @@ namespace OLED_Sleeper.Features.MonitorDimming.Handlers;
 /// Handles the execution of the <see cref="ApplyUndimCommand"/>.
 /// This class contains the business logic for restoring a monitor's brightness to its original value (undimming).
 /// </summary>
-public class ApplyUndimCommandHandler : ICommandHandler<ApplyUndimCommand>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ApplyUndimCommandHandler"/> class.
+/// </remarks>
+/// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
+public class ApplyUndimCommandHandler(
+    IMonitorDimmingService monitorDimmingService) : ICommandHandler<ApplyUndimCommand>
 {
-    private readonly IMonitorDimmingService _monitorDimmingService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ApplyUndimCommandHandler"/> class.
-    /// </summary>
-    /// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
-    public ApplyUndimCommandHandler(
-        IMonitorDimmingService monitorDimmingService)
-    {
-        _monitorDimmingService = monitorDimmingService;
-    }
+    private readonly IMonitorDimmingService _monitorDimmingService = monitorDimmingService;
 
     /// <summary>
     /// Executes the undimming logic asynchronously based on the command's data.

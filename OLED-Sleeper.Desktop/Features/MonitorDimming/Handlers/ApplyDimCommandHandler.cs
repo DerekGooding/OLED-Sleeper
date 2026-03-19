@@ -9,19 +9,14 @@ namespace OLED_Sleeper.Features.MonitorDimming.Handlers;
 /// Handles the execution of the <see cref="ApplyDimCommand"/>.
 /// This class contains the business logic for dimming a monitor to a specified brightness level.
 /// </summary>
-public class ApplyDimCommandHandler : ICommandHandler<ApplyDimCommand>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ApplyDimCommandHandler"/> class.
+/// </remarks>
+/// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
+public class ApplyDimCommandHandler(
+    IMonitorDimmingService monitorDimmingService) : ICommandHandler<ApplyDimCommand>
 {
-    private readonly IMonitorDimmingService _monitorDimmingService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ApplyDimCommandHandler"/> class.
-    /// </summary>
-    /// <param name="monitorDimmingService">The service responsible for controlling monitor brightness.</param>
-    public ApplyDimCommandHandler(
-        IMonitorDimmingService monitorDimmingService)
-    {
-        _monitorDimmingService = monitorDimmingService;
-    }
+    private readonly IMonitorDimmingService _monitorDimmingService = monitorDimmingService;
 
     /// <summary>
     /// Executes the dimming logic asynchronously based on the command's data.

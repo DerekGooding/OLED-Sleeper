@@ -12,29 +12,22 @@ namespace OLED_Sleeper.Services;
 /// Provides workspace management functionality, including monitor discovery, settings loading,
 /// and layout ViewModel construction for the main application UI.
 /// </summary>
-public class WorkspaceService : IWorkspaceService
+/// <remarks>
+/// Initializes a new instance of the <see cref="WorkspaceService"/> class.
+/// </remarks>
+/// <param name="monitorManager">Service for monitor enumeration.</param>
+/// <param name="settingsService">Service for loading and saving monitor settings.</param>
+/// <param name="monitorLayoutService">Service for creating monitor layout view models.</param>
+public class WorkspaceService(
+    IMonitorInfoManager monitorManager,
+    IMonitorSettingsFileService settingsService,
+    IMonitorLayoutService monitorLayoutService) : IWorkspaceService
 {
-    private readonly IMonitorInfoManager _monitorManager;
-    private readonly IMonitorSettingsFileService _settingsService;
-    private readonly IMonitorLayoutService _monitorLayoutService;
+    private readonly IMonitorInfoManager _monitorManager = monitorManager;
+    private readonly IMonitorSettingsFileService _settingsService = settingsService;
+    private readonly IMonitorLayoutService _monitorLayoutService = monitorLayoutService;
 
     public event EventHandler<ObservableCollection<MonitorLayoutViewModel>> WorkspaceReady;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="WorkspaceService"/> class.
-    /// </summary>
-    /// <param name="monitorManager">Service for monitor enumeration.</param>
-    /// <param name="settingsService">Service for loading and saving monitor settings.</param>
-    /// <param name="monitorLayoutService">Service for creating monitor layout view models.</param>
-    public WorkspaceService(
-        IMonitorInfoManager monitorManager,
-        IMonitorSettingsFileService settingsService,
-        IMonitorLayoutService monitorLayoutService)
-    {
-        _monitorManager = monitorManager;
-        _settingsService = settingsService;
-        _monitorLayoutService = monitorLayoutService;
-    }
 
     /// <summary>
     /// Builds the workspace asynchronously.
